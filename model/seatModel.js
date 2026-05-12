@@ -1,0 +1,26 @@
+import mongoose from "mongoose";
+
+const seatSchema = new mongoose.Schema({
+    seatNumber:{
+        type:String,
+        required:true,
+    },
+    floor:{
+        type:Number,
+        required:true,
+    },
+    isAvailable:{
+        type:Boolean,
+        default:true,
+    },
+    studentId:{
+        type:String,
+        default:null,
+    },
+    updatedAt:{
+        type:Date,
+        default:Date.now
+    }
+});
+
+export default mongoose.model("LibrarySeat",seatSchema);
