@@ -26,18 +26,18 @@ Students and staff often struggle to find empty seats in the library during peak
 
 1. Creating a New Seat Record (POST)
 The following screenshot shows the successful creation of a seat entry in the database using Postman.
-![Seat Creation](screenshots/create1.jpg)
+![Seat Creation](screenshots/create1.png)
 
 2. Fetching All Seat Data (GET)
 This screenshot displays the list of all registered seats retrieved from the MongoDB database.
-![Fetch All Seats](screenshots/getAll.jpg)
+![Fetch All Seats](screenshots/getAll.png)
 
 3. Updating a Seat Record (PUT)
 Updating the status of a specific seat (e.g., marking a seat as occupied or changing the floor) using its unique ID.
-![Update Seat](screenshots/update.jpg)
+![Update Seat](screenshots/update.png)
 
 4. Deleting a Seat Record (DELETE)
 Removing a seat record from the database once it is no longer in use or during maintenance.
-![Delete Seat](screenshots/delete.jpg)
+![Delete Seat](screenshots/delete.png)
 
 ---

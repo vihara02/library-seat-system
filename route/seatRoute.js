@@ -1,11 +1,11 @@
 import express from "express";
-import {createSeat, fetchSeats, updateSeat, deleteSeat} from "../controller/seatController.js";
+import { fetchSeats, createSeat, bookSeat, cancelBooking } from "../controller/seatController.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.post("/create", createSeat);
-route.get("/getAll", fetchSeats);
-route.put("/update/:id", updateSeat);
-route.delete("/delete/:id", deleteSeat);
+// Middleware (verifyToken) අයින් කරලා මේ විදියට ලියන්න
+router.get("/getall", fetchSeats);
+router.post("/book/:id", bookSeat); 
+router.post("/create", createSeat);
 
-export default route;
+export default router;

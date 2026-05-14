@@ -3,26 +3,27 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
+import seatRoutes from "./route/seatRoute.js";
+import authRoutes from "./route/authRoute.js";
 
-import route from "./route/seatRoute.js";
+dotenv.config();
 
 const app = express();
-app.use(bodyParser.json());
+
 app.use(cors());
-dotenv.config();
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 8000;
 const MONGOURL = process.env.MONGO_URL;
 
 mongoose.connect(MONGOURL)
-    .then(()=>{
-        console.log("Database Connected Successfully.");
-        app.listen(PORT,()=>{
+    .then(() => {
+        console.log("Database connected successfully.");
+        app.listen(PORT, () => {
             console.log(`Server is running on port: ${PORT}`);
         });
     })
-    .catch((error)=>console.log(error));
+    .catch((error) => console.log("DB connection error:", error));
 
-app.use("/api/seats", route);
-import authRoutes from './route/authRoute.js'; 
-app.use('/api/auth', authRoutes);
+app.use("/api/seats", seatRoutes);
+app.use("/api/auth", authRoutes);
