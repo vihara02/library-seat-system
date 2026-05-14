@@ -24,3 +24,5 @@ mongoose.connect(MONGOURL)
     .catch((error)=>console.log(error));
 
 app.use("/api/seats", route);
+import authRoutes from './route/authRoute.js'; 
+app.use('/api/auth', authRoutes);
