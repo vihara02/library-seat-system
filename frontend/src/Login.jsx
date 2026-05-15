@@ -17,6 +17,7 @@ const Login = () => {
             alert("Invalid Credentials! ❌");
         }
     };
+    
 
     return (
         <div style={styles.container}>
@@ -27,6 +28,15 @@ const Login = () => {
                     <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required style={styles.input} />
                     <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required style={styles.input} />
                     <button type="submit" style={styles.button}>Login Now</button>
+                    <p style={{ marginTop: '20px', fontSize: '14px', color: '#5D4037' }}>
+    Don't have an account? 
+    <span 
+        onClick={() => window.location.href = "/register"} 
+        style={{ color: '#8D6E63', fontWeight: 'bold', cursor: 'pointer', marginLeft: '5px', textDecoration: 'underline' }}
+    >
+        Register Here
+    </span>
+</p>
                 </form>
             </div>
         </div>
