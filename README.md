@@ -1,91 +1,138 @@
-# 📚 Smart Library Seat Booking System
-> A modern, full-stack solution for managing university library seating.
+# 📚 Pro Library Seat Management System
+
+A comprehensive, full-stack application designed to automate, manage, and optimize study seat allocations in a university library environment.
 
 ---
 
-## 🌟 Overview
-This project is a high-performance **MERN Stack** application designed to eliminate the hassle of finding a study spot. Users can visualize the library layout in real-time, book seats, and manage their reservations through a secure, intuitive interface.
+## 📝 Problem Description
+Traditional library seat management relies on manual tracking, leading to multiple inefficiencies:
+* **Seat Hoarding:** Students leaving personal belongings to secure seats for hours while staying absent.
+* **Lack of Real-Time Data:** No way for students to check seat availability beforehand, causing unnecessary crowds and wasted time inside the library.
+* **Manual Record Keeping:** Administrators struggle to track peak hours, usage statistics, and user accountability.
 
 ---
 
-## ✨ Key Features
-
-### 👤 User Module
-* **Secure Authentication:** JWT-based login and registration with password hashing using Bcrypt.
-* **Live Dashboard:** Real-time visualization of the seat grid.
-* **One-Click Booking:** Instant seat reservation with immediate UI feedback.
-
-### 🛡️ Admin Module
-* **Seat Management:** Create and configure new library seats dynamically.
-* **Booking Control:** Authority to cancel or reset any seat booking.
-* **Real-time Tracking:** Monitor the occupancy status of the entire library at a glance.
+## 💡 Proposed Solution
+The **Pro Library Seat Management System** addresses these issues through a centralized digital platform:
+* **Live Dashboard:** Provides real-time visibility of active, available, and reserved seats.
+* **Instant Booking & Release:** Allows students to claim an available seat by entering their student ID and release it instantly upon departure.
+* **Role-Based Transparency:** Enhances accountability, prevents seat hoarding, and minimizes administrative overhead.
 
 ---
 
-## 🛠️ Technology Stack
-
-| Layer | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Frontend** | React.js | Dynamic UI & State Management |
-| **Backend** | Node.js & Express | RESTful API Development |
-| **Database** | MongoDB Atlas | Cloud NoSQL Data Storage |
-| **Styling** | Custom CSS | Clean, modern library aesthetics |
-| **Auth** | JWT & Bcrypt | Security & Session Management |
+## ✨ Features
+* **Secure Authentication:** User login and registration using **JWT** (JSON Web Tokens).
+* **Interactive Seat Grid:** Color-coded visual layout displaying real-time seat availability status.
+* **Dynamic Booking:** One-click seat reservation linked directly to a unique Student ID.
+* **Instant Release:** Easy check-out mechanism to free up seats for other students.
+* **Fully Responsive UI:** Dark-themed modern interface optimized for desktop, tablet, and mobile browsers.
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Technologies Used
+* **Frontend:** React.js, Vite, Axios, Tailwind / CSS3
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB
+* **Security:** JSON Web Tokens (JWT), Bcrypt.js
 
-```text
-LibrarySystem/
-├── backend/
-│   ├── controller/      # Core business logic
-│   ├── model/           # Mongoose schemas (User, Seat)
-│   ├── route/           # Express endpoint definitions
-│   └── index.js         # Server entry point & DB connection
-└── frontend/
-    ├── src/
-    │   ├── Login.jsx    # Auth portal
-    │   ├── Register.jsx # User onboarding
-    │   ├── Dashboard.jsx# Interactive seat map
-    │   └── App.jsx      # Global routing & protection
-    └── main.jsx
+---
 
+## 🔌 API Endpoints
+
+### 🔐 Authentication Endpoints
+#### 1. Register User
+* **Endpoint:** `POST /api/library/register`
+* **Request Body:**
+```json
+{
+  "name": "Vihara",
+  "email": "vihara@gmail.com",
+  "password": "vihara123"
+}
 ```
-## 🚦 Getting Started
-1. Prerequisites
-    Node.js installed
-    MongoDB Atlas account
 
-2. Backend Setup
-    1.Open the root directory.
-    2.Create a .env file:
+#### 2.Login User
+* **Endpoint:** `POST /api/library/login`
+* **Request Body:**
+```json
+{
+  "name": "Vihara",
+  "email": "vihara@gmail.com",
+  "password": "vihara123"
+}
+```
+* **Response:** Returns a valid JWT token.
 
-        MONGO_URL="mongodb://localhost:27017/LibrarySeatSystem"
-        JWT_SECRET=viharaa_secret_123
-        PORT=8000
-    3.Run npm install then node index.js.
+### 🪑 Seat Management Endpoints
+#### 3.Fetch All Seats
+* **Endpoint:** `GET /api/library/getAll`
+* **Response:** Array of all seat objects with their availability statuses.
 
-3. Frontend Setup
-    Navigate to /frontend.
-    Run npm install.
-    Start the app: npm run dev.
+#### 4.Create a Seat
+* **Endpoint:** `POST /api/library/create`
+* **Request Body:**
+```json
+{
+  "seatNumber": "S-101",
+  "zone": "Silent Zone"
+}
+```
+
+#### 5.Update/Book a Seat
+* **Endpoint:** `PUT /api/library/update/:id`
+* **Request Body:**
+```json
+{
+  "isAvailable": false,
+  "studentId": "ST12345"
+}
+```
+
+#### 6.Delete a Seat
+* **Endpoint:** `DELETE /api/library/delete/:id`
 
 
-## 📡 API Documentation
+## 🚀 Setup Instructions
 
-**Authentication**
+#### 1. Prerequisites
+Ensure you have the following installed on your system:
+* **Node.js (v16 or higher)**
+* **MongoDB running locally**
 
-    POST /api/auth/register - Create a new student account.
-    POST /api/auth/login - Authenticate and receive a JWT.
+#### 2. Environment Variables
+Create a .env file in your backend root directory and add:
 
-**Seat Operations**
+    PORT=8000
+    MONGO_URL=mongodb://localhost:27017/LibrarySystem
 
-    GET /api/seats/getall - Fetch all library seats.
-    POST /api/seats/create - Initialize a new seat (Admin Only).
-    POST /api/seats/book/:id - Reserve a seat for a user.
-    PUT /api/seats/cancel/:id - Reset seat availability (Admin Only).
 
-## 🎓 Author
+## 🏃 How to Run the Project
 
-Vihara MERN Stack Developer | 2026 Final Project Submission
+#### Step 1: Run the Backend Server
+```bash
+# Navigate to the backend folder
+cd backend
+
+# Install necessary packages
+npm install
+
+# Start the Node server
+node index.js
+```
+
+#### Step 2: Run the Frontend Application
+```bash
+# Navigate to the frontend folder
+cd frontend
+
+# Install client-side dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+Once both servers are running, open your browser and navigate to the local URL provided by Vite (usually http://localhost:5173).
+
+#### Developed by Vihara 🚀
+
+
